@@ -9,7 +9,7 @@ phases:
             - tar xzf apache-maven-3.5.4-bin.tar.gz
             - ln -s apache-maven-3.5.4 maven
             - echo logging in to Amazon
-            - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/e0l1n5a0
+            - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 131872871854.dkr.ecr.us-east-2.amazonaws.com
       
     build:
         commands:
@@ -18,13 +18,13 @@ phases:
             - echo Build started on `date`
             - echo Building Docker image...
             - docker build -t deployment .
-            - docker tag deployment:latest public.ecr.aws/e0l1n5a0/deployment:latest
+            - docker tag deployment:latest 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
             
     post_build:
         commands:
             - echo Build completed on `date`
             - echo Pushing the Docker images
-            - docker push public.ecr.aws/e0l1n5a0/deployment:latest
+            - docker push 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
             
         
         
