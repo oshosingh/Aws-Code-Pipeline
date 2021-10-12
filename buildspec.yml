@@ -16,15 +16,15 @@ phases:
             - mvn clean install
             - rm -rf apache-maven-3.5.4-bin.tar.gz apache-maven-3.5.4
             - echo Build started on `date`
-            - echo Building Docker image...
-            - docker build -t deployment .
-            - docker tag deployment:latest 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
+            #- echo Building Docker image...
+            #- docker build -t deployment .
+            #- docker tag deployment:latest 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
             
     post_build:
         commands:
             - echo Build completed on `date`
             - echo Pushing the Docker images
-            - docker push 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
+            #- docker push 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
             
         
         
