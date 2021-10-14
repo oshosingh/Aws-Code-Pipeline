@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-    - source /deploy/
-      destination: /home/ubuntu/app/backend
+    - source: /deploy/
+      destination: /home/ubuntu/app/backend/spring
 file_exists_behaviour: OVERWRITE
 permissions:
     - object: /home/ubuntu/app
