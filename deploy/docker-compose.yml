@@ -1,3 +1,4 @@
+version: "3"
 services:
     deployment:
         image: 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
