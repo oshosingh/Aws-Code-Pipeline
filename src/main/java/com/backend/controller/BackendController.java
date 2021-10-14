@@ -12,7 +12,7 @@ public class BackendController {
 	}
 	
 	@GetMapping("/say/hello/again")
-	public String sayHello() {
+	public String sayHelloAgain() {
 		return "Hello world 2";
 	}
 }
