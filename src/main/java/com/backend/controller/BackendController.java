@@ -10,4 +10,9 @@ public class BackendController {
 	public String sayHello() {
 		return "Hello world";
 	}
+	
+	@GetMapping("/say/hello/again")
+	public String sayHello() {
+		return "Hello world 2";
+	}
 }
