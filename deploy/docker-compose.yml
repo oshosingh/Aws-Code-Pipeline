@@ -3,5 +3,5 @@ services:
     deployment:
         image: 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
         restart: always
-        posrts:
+        ports:
             -   "8081:8081"
