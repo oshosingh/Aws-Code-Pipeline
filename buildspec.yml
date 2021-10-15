@@ -9,8 +9,7 @@ phases:
             - tar xzf apache-maven-3.5.4-bin.tar.gz
             - ln -s apache-maven-3.5.4 maven
             - echo logging in to Amazon
-            - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 131872871854.dkr.ecr.us-east-2.amazonaws.com
-            - docker login -u betaa -p OshoDocker25@
+            # docker login
       
     build:
         commands:
