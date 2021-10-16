@@ -25,6 +25,11 @@ phases:
             - echo Build completed on `date`
             - echo Pushing the Docker images
             - docker push 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
+artifacts:
+    files:
+        - '**/*'
+    base_directory: 'SpringBackend'
+            
             
         
         
