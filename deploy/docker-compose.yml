@@ -4,9 +4,9 @@ services:
         logging:
             driver: awslogs
             options:
-                awslogs-region: us-east-2
+                awslogs-region: ${region}
                 awslogs-group: docker-backend-logs
-        image: 131872871854.dkr.ecr.us-east-2.amazonaws.com/deployment:latest
+        image: ${repoimage}
         restart: always
         ports:
             -   "8081:8081"
