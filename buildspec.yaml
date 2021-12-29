@@ -13,8 +13,6 @@ phases:
       
     build:
         commands:
-            - mvn clean install
-            - rm -rf apache-maven-3.5.4-bin.tar.gz apache-maven-3.5.4
             - echo Build started on `date`
             - echo Building Docker image...
             - docker build -t springbackend .
