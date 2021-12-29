@@ -4,10 +4,6 @@ phases:
     pre_build:
         commands: 
             - apt-get update
-            - apt-get install -y jq
-            - wget http://www-eu.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
-            - tar xzf apache-maven-3.5.4-bin.tar.gz
-            - ln -s apache-maven-3.5.4 maven
             - echo logging in to Amazon
             - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/e0l1n5a0
       
