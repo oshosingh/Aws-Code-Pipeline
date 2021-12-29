@@ -5,7 +5,7 @@ phases:
         commands: 
             - apt-get update
             - echo logging in to Amazon
-            - aws ecr-public get-login-password --region ap-south-1 | docker login --username AWS --password-stdin public.ecr.aws/e0l1n5a0/springbackend
+            - aws ecr-public get-login-password --region ap-south-1 | docker login --username AWS --password-stdin public.ecr.aws/e0l1n5a0
       
     build:
         commands:
