@@ -14,13 +14,13 @@ phases:
             - echo Build started on `date`
             - echo Building Docker image...
             - docker build -t springbackend .
-            - docker tag springbackend:latest 131872871854.dkr.ecr.ap-south-1.amazonaws.com/springbackend:latest
+            - docker tag springbackend:latest $REPOSITORY_URI:latest
             
     post_build:
         commands:
             - echo Build completed on `date`
             - echo Pushing the Docker images
-            - docker push 131872871854.dkr.ecr.ap-south-1.amazonaws.com/springbackend:latest
+            - docker push $REPOSITORY_URI:latest
 artifacts:
     files:
         - '**/*'
