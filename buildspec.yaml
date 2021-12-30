@@ -7,7 +7,7 @@ phases:
             - aws --version
             - echo logging in to Amazon
             - REPOSITORY_URI=131872871854.dkr.ecr.ap-south-1.amazonaws.com/springbackend
-            - aws ecr get-login-password --region ap-souht-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
+            - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
       
     build:
         commands:
