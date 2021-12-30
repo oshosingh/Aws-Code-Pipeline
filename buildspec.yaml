@@ -6,7 +6,7 @@ phases:
             - apt-get update
             - aws --version
             - echo logging in to Amazon
-            - $(aws ecr get-login-password --region ap-south-1 --no-include-email)
+            - $(aws ecr get-login-password --region ap-south-1)
             - REPOSITORY_URI=131872871854.dkr.ecr.ap-south-1.amazonaws.com/springbackend
       
     build:
