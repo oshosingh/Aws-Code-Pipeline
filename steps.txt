@@ -9,3 +9,5 @@ EC2 Policies:
   2. EC2CodeDeployRole
   
   imp points -> install awscli, codedeploy-agent
+
+--- END ---
