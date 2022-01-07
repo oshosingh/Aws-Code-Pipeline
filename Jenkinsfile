@@ -3,11 +3,11 @@ pipeline {
     
     stages{
         steps('install packages'){
-            sh 'apt-get update -y'
+            apt-get update -y
         }
         steps('get project'){
-            sh 'git login -u username -p password'
-            sh 'git pull repo_url'
+            git login -u username -p password
+            git pull repo_url
         }
         steps('build'){
             mvn clean install
