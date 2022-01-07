@@ -2,18 +2,30 @@ pipeline {
     agent any 
     
     stages{
-        steps('install packages'){
-            apt-get update -y
+        stage('install packages'){
+            steps{
+                apt-get update -y
+            }
         }
-        steps('get project'){
-            git login -u username -p password
-            git pull repo_url
+        stage('get project'){
+            environment {
+                git_cred = credentials('cred_name')
+            }
+            steps{
+                git login -u $git_cred_USR -p $git_cred_PSW
+                git pull repo_url
+            }
+           
         }
-        steps('build'){
-            mvn clean install
+        stage('build'){
+            steps{
+              mvn clean install  
+            }
         }
-        steps('docker image'){
-            docker build -t deployment .
+        stage('docker image'){
+            steps{
+               docker build -t deployment . 
+            }
         }
     }
   
