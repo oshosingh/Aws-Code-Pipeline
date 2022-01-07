@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('install packages'){
             steps{
-                sh 'apt-get update -y'
+                echo 'install packages'
             }
         }
         stage('build'){
