@@ -9,12 +9,12 @@ pipeline {
         }
         stage('build'){
             steps{
-              sh 'mvn clean install'  
+               echo 'build stage'  
             }
         }
         stage('docker image'){
             steps{
-               sh 'docker build -t deployment .' 
+               echo 'docker image stage'
           
             }
         }
