@@ -1,0 +1,68 @@
+def var = groovyScriptMethod()
+
+pipeline {
+    agent any
+
+    // global environment
+    environment {
+        // declare variables, accessible by all stages
+    }
+
+    // parameters
+    parameters {
+        choice(name: 'VERSION', choices: ['1.0.0,','1.0.1'], description: 'xyz')
+        booleanParam(name: 'execute', defaultValue: true, description: 'abc')
+
+        // call using param.
+    }
+
+    stages{
+        
+        stage('build'){
+            steps{
+                echo 'build stage'
+            }
+        }
+
+        stage('coditional stage'){
+            when{
+                expression{
+                    boolean exp 
+                }
+            }
+            steps{
+                // write steps
+            }
+        }
+
+        stage('local environment'){
+            environment{
+                GIT_CRED = credentials('credentials id')
+            }
+            steps{
+                // write steps
+            }
+        }
+
+        stage('script stage'){
+            steps{
+                script{
+                    // run groovy scripts
+                }
+            }
+        }
+
+    }
+
+    post{
+        always{
+            // always run scripts
+        }
+        success{
+            // only run after build succeed
+        }
+        failure{
+            // only run after build fails
+        }
+    }
+}
