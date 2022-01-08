@@ -19,5 +19,11 @@ pipeline {
             }
         }
     }
+    
+    post{
+        success{
+            echo 'success message'
+        }   
+    }
   
 }
