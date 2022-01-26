@@ -5,3 +5,18 @@ services:
         restart: always
         ports:
             -   "8081:8081"
+        pull_policy: always # [always,never,missing,build] if build field is present it takes precedence
+        volumes:
+            # anonymous volumes ( volume is removed if container is removed )
+            # - path/to/docker/volume
+
+            # named volumes
+            # - named_volum: /path/to/docker/volume
+
+            # bind mounts
+            - path/to/host/name: /path/to/docker/volume
+    
+    volumes:
+        named_volume:
+        # named volumes absolute path -> /var/lib/docker/volume/named_volume
+        # anonymous volume absolute path -> /var/lib/docker/volume
