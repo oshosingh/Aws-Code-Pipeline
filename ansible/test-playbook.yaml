@@ -1,0 +1,32 @@
+---
+- name: update and install package
+  hosts: host 
+  #connection: local
+  become: no
+  vars:
+    filename: abc.txt 
+  vars_files:
+    - /path/to/var/files/file.yaml
+  tasks:
+  - name: update system pakage
+    apt: 
+      name: "*"
+      state: latest
+      update_cache: yes
+
+- name: create directory and files
+  hosts: host
+  become: no
+  ignore_errors: yes 
+  tasks:
+    - name: create directory
+      command: mkdir /home/ubuntu/ansible-store
+    - name: create file 
+      command: touch /home/ubuntu/ansible-store/{{filename}}
+      lineinfile:
+        path: /home/ubuntu/ansible-store/{{filename}}
+        line: hello world
+
+
+  
+
