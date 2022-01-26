@@ -1,0 +1,27 @@
+# install docker python on slave node
+---
+- name: create a data container
+  hosts: host
+  become: no
+  vars:
+    docker_container_name: container
+  docker_container:
+    name: {{docker_container_name}}
+    image: busybox
+    state: present
+    command: sleep infinity
+    recreate: yes
+    exposed_ports:
+      - 8080
+    env:
+      secret_key: key 
+    volumes:
+      - /data
+
+- name: stop a container
+  hosts: host 
+  become: no
+  docker_container:
+    name: container_name 
+    state: stopped 
+

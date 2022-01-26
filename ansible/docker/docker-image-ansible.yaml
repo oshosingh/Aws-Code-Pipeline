@@ -1,0 +1,25 @@
+---
+- name: pull an image
+  docker_image: 
+    name: nginx
+  
+- name: tag and push to repo
+  docker_image:
+    name: image_name
+    repository: hub/image
+    tag: latest
+    push: yes
+
+- name: remove an image 
+  docker_image:
+    state: absent
+    name: image_name
+    tag: v1
+    
+- name: Build image and with buildargs
+  docker_image:
+     path: /path/to/build/dir
+     name: myimage
+     buildargs:
+       log_volume: /var/log/myapp
+       listen_port: 8080
