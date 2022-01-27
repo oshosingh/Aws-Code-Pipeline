@@ -31,32 +31,7 @@
     mode: '0644'
     backup: yes
 
-- name: Copy a new "sudoers" file into place, after passing validation with visudo
-  ansible.builtin.copy:
-    src: /mine/sudoers
-    dest: /etc/sudoers
-    validate: /usr/sbin/visudo -csf %s
-
-- name: Copy a "sudoers" file on the remote machine for editing
-  ansible.builtin.copy:
-    src: /etc/sudoers
-    dest: /etc/sudoers.edit
-    remote_src: yes
-    validate: /usr/sbin/visudo -csf %s
-
 - name: Copy using inline content
   ansible.builtin.copy:
     content: '# This file was moved to /etc/other.conf'
     dest: /etc/mine.conf
-
-- name: If follow=yes, /path/to/file will be overwritten by contents of foo.conf
-  ansible.builtin.copy:
-    src: /etc/foo.conf
-    dest: /path/to/link  # link to /path/to/file
-    follow: yes
-
-- name: If follow=no, /path/to/link will become a file and be overwritten by contents of foo.conf
-  ansible.builtin.copy:
-    src: /etc/foo.conf
-    dest: /path/to/link  # link to /path/to/file
-    follow: no
