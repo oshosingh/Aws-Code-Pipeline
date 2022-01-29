@@ -1,0 +1,65 @@
+# Directives
+include /path/to/nginx/conf files
+
+# load balancer
+upstream backend {
+  # load balancer algorithm is Round Robin Default
+  # least_conn; (another load balancer algo, use in production)
+  
+  server ip-address1 max_fails=2 fail_timeout=30s;
+  server ip-address2 max_fails=2 fail_timeout=30s;
+}
+
+upstream backend {
+  # 2:1 ratio 
+  server ip-address1 weight=2;
+  server ip-address2;
+}
+
+# server block
+server {
+  listen port;
+  listen [::]:port; #ipv6
+  
+  server_name localhost;
+  
+    location /{
+      root filepath(index.html)
+      index index.html index.htm
+    }
+
+    location / {
+      try_files $uri $uri/ /path/to/index.html
+    }
+}
+
+# reverse proxy
+server {
+    listen 80;
+    server_name localhost;
+    
+    location / {
+        proxy_pass http://ip-address;
+
+        # upstream servers
+        # proxy_pass http://backend;
+        
+        proxy_set_header X_REAL_IP $remote_addr;
+        proxy_set_header HOST $host;
+    }
+    
+    # redirection 301 (notify user)
+    location /api {
+        return 301 http://$host/api/v1; 
+    } 
+    
+    # redirection without notifying user
+    location /api {
+        rewrite ^/api(*.)$ $1 break;
+        proxy_pass http://$host;
+    }
+}
+
+
+
+
