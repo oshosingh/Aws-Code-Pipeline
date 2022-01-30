@@ -65,5 +65,43 @@ server {
 }
 
 
+# ssl 
+server {
+    listern 80;
+    server_name xyz.com;
+    
+    return 301 https://$server_name$request_uri permanent;
+}
+
+server {
+    listen 443;
+    server_name xyz.com;
+    
+    ssl_certificate /path/to/public/key.crt;
+    ssl_certificate_key /path/to/private/key;
+    
+    # generate asymmetric key -> ssh-keygen -t rsa -m key.pem
+    # generate self-signed certificate -> openssl req -x509 --nodes -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
+    
+    root /etc/nginx/ssl/web;
+    index index.html index.htm;
+}
+
+# ssl termination reverse proxy
+
+server {
+    listen 443;
+    server_name xyz.com;
+    
+    ssl_certificate /path/to/public/key.crt;
+    ssl_certificate_key /path/to/private/key;
+    
+    location / {
+      proxy_pass http://localhost:8080;
+    }
+}
+
+
+
 
 
