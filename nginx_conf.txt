@@ -40,6 +40,10 @@ server {
     
     location / {
         proxy_pass http://ip-address;
+        
+        # whitelisting
+        allow <ip-address>;
+        deny all;
 
         # upstream servers
         # proxy_pass http://backend;
