@@ -16,6 +16,8 @@ upstream backend {
   server ip-address2;
 }
 
+===============================================================================
+
 # server block
 server {
   listen port;
@@ -32,6 +34,8 @@ server {
       try_files $uri $uri/ /path/to/index.html
     }
 }
+
+===============================================================================
 
 # reverse proxy
 server {
@@ -64,6 +68,7 @@ server {
     }
 }
 
+=================================================================================
 
 # ssl 
 server {
@@ -86,6 +91,8 @@ server {
     root /etc/nginx/ssl/web;
     index index.html index.htm;
 }
+
+==================================================================================
 
 # ssl termination reverse proxy
 
